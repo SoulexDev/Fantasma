@@ -1,0 +1,66 @@
+﻿using OpenTK.Mathematics;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+namespace Fantasma.Generation
+{
+    public class ChunkColumn
+    {
+        public List<SubChunk> m_chunks = new List<SubChunk>();
+
+        public bool m_generating;
+        public bool m_generated;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public SubChunk GetChunk(int i)
+        {
+            return m_chunks[i];
+        }
+        public int GetIndex(SubChunk chunk)
+        {
+            if (m_chunks.Contains(chunk))
+                return m_chunks.IndexOf(chunk);
+            else
+                return -1;
+        }
+        public bool ContainsChunk(int i)
+        {
+            return i > -1 && i < m_chunks.Count;
+        }
+        public void GenerateAllData()
+        {
+            
+        }
+        public void GenerateData()
+        {
+
+        }
+        public void MeshSubChunk()
+        {
+            
+        }
+        public void AggresiveGenerate(Vector3i position)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                SubChunk chunk = new SubChunk(position, WorldManager.m_instance);
+                m_chunks.Add(chunk);
+                chunk.ForceGenerate();
+
+                position.Y += WorldParameters.m_chunkSize;
+            }
+        }
+        public void MeshAll()
+        {
+            foreach (SubChunk chunk in m_chunks)
+            {
+                chunk.MeshChunk(null);
+            }
+        }
+        public void Render()
+        {
+            //m_chunks.ForEach(c=>c.Render());
+        }
+    }
+}
