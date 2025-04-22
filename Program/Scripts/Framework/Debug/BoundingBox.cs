@@ -1,4 +1,4 @@
-﻿using Fantasma.Collision;
+﻿using Fantasma.Physics;
 using Fantasma.Framework;
 using Fantasma.Generation;
 using Fantasma.Graphics;
@@ -18,9 +18,9 @@ namespace Fantasma.Debug
         {
             if(m_bounds != null)
             {
-                m_transform.scale.X = m_bounds.GetWidth();
-                m_transform.scale.Y = m_bounds.GetHeight();
-                m_transform.scale.Z = m_bounds.GetDepth();
+                m_transform.localScale.X = m_bounds.GetWidth();
+                m_transform.localScale.Y = m_bounds.GetHeight();
+                m_transform.localScale.Z = m_bounds.GetDepth();
             }
         }
     }

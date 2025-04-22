@@ -26,14 +26,5 @@ namespace Fantasma.Graphics
 
             return rend;
         }
-
-        public static void RenderOpaques()
-        {
-            m_opaqueRenderables.ForEach(r => r.m_mesh.Render());
-        }
-        public static void RenderTransparents()
-        {
-
-        }
     }
 }

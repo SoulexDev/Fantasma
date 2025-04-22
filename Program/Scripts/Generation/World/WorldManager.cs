@@ -1,11 +1,8 @@
-﻿using Fantasma.Collision;
-using Fantasma.Data;
-using Fantasma.Debug;
+﻿using Fantasma.Data;
 using Fantasma.Globals;
+using Fantasma.Physics;
 using OpenTK.Mathematics;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Fantasma.Generation
 {
@@ -18,9 +15,6 @@ namespace Fantasma.Generation
         private VoidDimension m_void;
 
         public Dictionary<Vector2i, ChunkColumn> m_chunkColumns = new Dictionary<Vector2i, ChunkColumn>();
-
-        private List<BoundingBox> m_boundingBoxes = new List<BoundingBox>();
-
         public WorldManager()
         {
             m_instance = this;
@@ -79,22 +73,7 @@ namespace Fantasma.Generation
                     {
                         if((m_instance.GetBlock(x, y, z) & BlockType.NoCollisionFlags) == 0)
                         {
-                            AABB collider = new AABB(x, x + 1, y, y + 1, z, z + 1);
-                            Vector3i pos = new Vector3i(x, y, z);
-
-                            colliders.Add(collider);
-
-                            int index = CoordinateUtils.ThreeToIndex(pos, (int)bounds.m_maxX - (int)bounds.m_minX, (int)bounds.m_maxY - (int)bounds.m_minY);
-
-                            if (index >= m_instance.m_boundingBoxes.Count)
-                            {
-                                BoundingBox box = new BoundingBox();
-                                box.Create(collider);
-                                box.m_transform.position = pos;
-                                m_instance.m_boundingBoxes.Add(box);
-                            }
-                            else if(index > -1 && index < m_instance.m_boundingBoxes.Count)
-                                m_instance.m_boundingBoxes[index].m_transform.position = pos;
+                            colliders.Add(new AABB(x, x + 1, y, y + 1, z, z + 1));
                         }
                     }
                 }

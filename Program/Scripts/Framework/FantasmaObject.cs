@@ -9,10 +9,10 @@ namespace Fantasma.Framework
     {
         public Transform m_transform;
         public MeshRenderer m_meshRenderer;
-        //public List<Component> m_components = new List<Component>();
 
         public FantasmaObject()
         {
+            Core.m_objects.Add(this);
             m_transform = new Transform();
             Awake();
         }
@@ -28,9 +28,16 @@ namespace Fantasma.Framework
         {
 
         }
-        public virtual void Dispose()
+        public virtual void OnRender()
         {
-            m_meshRenderer.Dispose();
+
+        }
+        public virtual void Dispose(bool removeFromCoreObjects = true)
+        {
+            if(removeFromCoreObjects)
+                Core.m_objects.Remove(this);
+            if(m_meshRenderer != null)
+                m_meshRenderer.Dispose();
         }
     }
 }

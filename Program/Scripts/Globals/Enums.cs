@@ -25,6 +25,15 @@ namespace Fantasma.Globals
         BillboardFlags = ShortGrass,
         Nothing = 1, Air = 2, Dirt = 4, Grass = 8, Stone = 16, Sand = 32, Wood = 64, Glass = 128, Water = 256, Lava = 512, ShortGrass = 1024
     }
+    public enum CollisionFlags
+    {
+        CollisionForward = 1, CollisionRight = 2, CollisionBack = 4, CollisionLeft = 8, CollisionUp = 16, CollisionDown = 32, 
+        NoCollisionX = ~(CollisionLeft | CollisionRight), 
+        NoCollisionY = ~(CollisionUp | CollisionDown), 
+        NoCollisionZ = ~(CollisionForward | CollisionBack)
+    }
     public enum RenderableType { Opaque, Transparent }
     public enum DimensionType { Ideonia, Void }
+
+    public enum PlayerStates { Idle, Walk, Sprint, Jump, Airborne }
 }

@@ -29,3 +29,4 @@ H:\OpenTKProjects\Fantasma\obj\Debug\netcoreapp3.1\Fantasma.dll
 H:\OpenTKProjects\Fantasma\obj\Debug\netcoreapp3.1\Fantasma.pdb
 H:\OpenTKProjects\Fantasma\obj\Debug\netcoreapp3.1\Fantasma.genruntimeconfig.cache
 H:\OpenTKProjects\Fantasma\bin\Debug\netcoreapp3.1\StbImageSharp.dll
+H:\OpenTKProjects\Fantasma\obj\Debug\netcoreapp3.1\Fantasma.sourcelink.json

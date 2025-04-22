@@ -1,13 +1,12 @@
 ﻿using Fantasma.Framework;
 using Fantasma.Generation;
 using Fantasma.Graphics;
-using Fantasma.Player;
+using Fantasma.Scripts;
 using OpenTK.Graphics.OpenGL4;
-using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
-using OpenTK.Windowing.GraphicsLibraryFramework;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 
@@ -20,20 +19,24 @@ namespace Fantasma
         public static string m_texturesPath = "../../../Program/Assets/resourcepacks/" + m_resourcePack + "/textures/";
         public static float m_aspect;
 
+        public static GameWindow m_window { get; private set; }
+
+        public static List<FantasmaObject> m_objects = new List<FantasmaObject>();
         public static Camera m_currentCamera;
+        public static Random m_random;
+        public static int m_seed;
 
         private Time m_time;
         private Input m_input;
-
         private WorldManager m_worldManager;
-
-        public static Random m_random;
-        public static int m_seed;
+        private PlayerController m_playerController;
+        private PlayerInteraction m_playerInteraction;
 
         public Core(int width, int height, string title) :
             base(GameWindowSettings.Default, new NativeWindowSettings() { ClientSize = (width, height), Title = title })
         {
-            m_aspect = (float)width / height; 
+            m_aspect = (float)width / height;
+            m_window = this;
         }
         protected override void OnLoad()
         {
@@ -48,10 +51,12 @@ namespace Fantasma
 
             m_time = new Time();
             m_input = new Input();
-            m_currentCamera = new Camera();
 
             m_worldManager = new WorldManager();
             m_worldManager.GenerateAll();
+
+            m_playerController = new PlayerController();
+            m_playerInteraction = new PlayerInteraction();
         }
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
@@ -62,8 +67,10 @@ namespace Fantasma
             m_input.SetMouseState(MouseState);
             m_input.SetInputVariables();
 
-            if (m_currentCamera != null)
-                m_currentCamera.Update();
+            for (int i = 0; i < m_objects.Count; i++)
+            {
+                m_objects[i].Update();
+            }
         }
         protected override void OnRenderFrame(FrameEventArgs args)
         {
@@ -71,6 +78,11 @@ namespace Fantasma
             GL.ClearColor(Color.CornflowerBlue);
             GL.CullFace(TriangleFace.Back);
             GL.DepthFunc(DepthFunction.Lequal);
+
+            for (int i = 0; i < m_objects.Count; i++)
+            {
+                m_objects[i].OnRender();
+            }
 
             MeshRenderer.Render(RenderableFactory.m_opaqueRenderables);
             MeshRenderer.Render(RenderableFactory.m_transparentRenderables);
@@ -93,6 +105,9 @@ namespace Fantasma
             ShaderContainer.m_standardShader.Dispose();
             ShaderContainer.m_standardTransparentShader.Dispose();
             ShaderContainer.m_wireShader.Dispose();
+
+            m_objects.ForEach(o=>o.Dispose(false));
+            m_objects.Clear();
         }
     }
 }

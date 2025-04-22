@@ -44,7 +44,7 @@ namespace Fantasma.Generation
 
             for (int i = 0; i < 6; i++)
             {
-                BuildFace(transform.position, data, ref vertexOffset, ref triangleIndex, ref vertexIndex, i);
+                BuildFace(transform.localPosition, data, ref vertexOffset, ref triangleIndex, ref vertexIndex, i);
             }
 
             m.Set(data);

@@ -1,5 +1,6 @@
 ﻿using OpenTK.Mathematics;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Fantasma.Graphics
 {
@@ -73,18 +74,23 @@ namespace Fantasma.Graphics
             for (int i = 0; i < renderables.Count; i++)
             {
                 Renderable renderable = renderables[i];
-                if (renderable.m_shader == null || renderable.m_mesh == null)
-                    return;
-
-                renderable.m_modelMatrix = Matrix4.CreateFromQuaternion(renderable.m_transform.rotation);
-                renderable.m_modelMatrix *= Matrix4.CreateTranslation(renderable.m_transform.position);
-                renderable.m_modelMatrix *= Matrix4.CreateScale(renderable.m_transform.scale);
-
-                renderable.m_shader.SetMatrix4("uModel", renderable.m_modelMatrix);
-                renderable.m_shader.Use();
-
-                renderable.m_mesh.Render();
+                Render(renderable);
             }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Render(Renderable renderable)
+        {
+            if (renderable.m_shader == null || renderable.m_mesh == null)
+                return;
+
+            renderable.m_modelMatrix = Matrix4.CreateFromQuaternion(renderable.m_transform.localRotation);
+            renderable.m_modelMatrix *= Matrix4.CreateTranslation(renderable.m_transform.localPosition);
+            renderable.m_modelMatrix *= Matrix4.CreateScale(renderable.m_transform.localScale);
+
+            renderable.m_shader.SetMatrix4("uModel", renderable.m_modelMatrix);
+            renderable.m_shader.Use();
+
+            renderable.m_mesh.Render();
         }
         //public void AddRenderable(string name, Renderable renderable)
         //{

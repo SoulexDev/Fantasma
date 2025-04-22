@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fantasma")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e02f5f7d97ce2d175dde9f38d50694cf8f81450e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fantasma")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fantasma")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
