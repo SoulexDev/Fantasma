@@ -81,6 +81,17 @@ namespace Fantasma.Generation
 
             return colliders;
         }
+        public static void ChangeBlock(Vector3i worldPos, BlockType block)
+        {
+            Vector3i chunkPos = CoordinateUtils.LocalChunkCoord(worldPos);
+            SubChunk chunk = GetChunk(chunkPos);
+            if (chunk == null)
+                return;
+
+            Vector3i voxelPos = worldPos - chunkPos * WorldParameters.m_chunkSize;
+
+            chunk.ChangeBlock(voxelPos, block);
+        }
         public BlockData GetBlockData(Vector3i pos)
         {
             return BlockDataManager.m_blockData[GetBlock(pos)];

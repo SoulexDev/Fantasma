@@ -36,8 +36,6 @@ namespace Fantasma.Framework
         {
             if(removeFromCoreObjects)
                 Core.m_objects.Remove(this);
-            if(m_meshRenderer != null)
-                m_meshRenderer.Dispose();
         }
     }
 }

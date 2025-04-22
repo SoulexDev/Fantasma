@@ -46,6 +46,11 @@ namespace Fantasma.Generation
                 //m_blocks[i] = BlockType.Dirt;
             }
         }
+        public void ChangeBlock(Vector3i voxelPos, BlockType block)
+        {
+            m_blocks[CoordinateUtils.ThreeToIndex(voxelPos, WorldParameters.m_chunkSize)] = block;
+            MeshChunk(null);
+        }
         public async Task GenerateData()
         {
             ThreadPool.QueueUserWorkItem(new WaitCallback(GenerateDataThreaded));

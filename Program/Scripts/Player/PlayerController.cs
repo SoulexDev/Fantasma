@@ -21,13 +21,10 @@ namespace Fantasma.Scripts
         public float m_sprintSpeed = 6;
         public float m_jumpHeight = 1.2f;
 
-        public float m_gravity;
         public float m_groundSpeed = 0;
 
         private bool m_jumped;
         private float m_jumpBufferTimer = 0;
-
-        private float mininiasdniasnd;
 
         private Vector3 m_forward;
 
@@ -52,13 +49,12 @@ namespace Fantasma.Scripts
                     m_jumped = false;
                 }
             }
-            Gravity();
+            Grounded();
             CalculateMoveVector();
 
-            m_physicsBody.Move();
-
-            m_physicsBody.m_velocity.X *= 0.99f;
-            m_physicsBody.m_velocity.Z *= 0.99f;
+            float interpSpeed = (m_grounded ? 10 : 0) * Time.m_deltaTime;
+            m_physicsBody.m_velocity.X = MathHelper.Lerp(m_physicsBody.m_velocity.X, 0, interpSpeed);
+            m_physicsBody.m_velocity.Z = MathHelper.Lerp(m_physicsBody.m_velocity.Z, 0, interpSpeed);
 
             m_transform.position = m_physicsBody.m_position;
             m_cameraController.m_transform.position = m_transform.position + 0.7f * Vector3.UnitY;
@@ -66,7 +62,6 @@ namespace Fantasma.Scripts
         private void CalculateMoveVector()
         {
             Vector2 inputVector = new Vector2(Input.Horizontal, Input.Vertical);
-            Vector2 moveXZ = Vector2.Zero;
 
             m_forward = Quaternion.FromAxisAngle(Vector3.UnitY, MathHelper.DegToRad * m_cameraController.m_mouseX) * Vector3.UnitZ;
 
@@ -76,33 +71,22 @@ namespace Fantasma.Scripts
 
                 m_physicsBody.m_velocity += inputVector.X * -m_camTransform.right + inputVector.Y * m_forward;
 
-                moveXZ = m_physicsBody.m_velocity.Xz.Normalized() * speed * Time.m_deltaTime;
-
-                m_physicsBody.m_velocity.X = moveXZ.X;
-                m_physicsBody.m_velocity.Z = moveXZ.Y;
+                m_physicsBody.m_velocity.Xz = m_physicsBody.m_velocity.Xz.Normalized() * speed * Time.m_deltaTime;
             }
 
             if (m_grounded && Input.GetKeyDown(Keys.Space))
             {
-                m_physicsBody.m_velocity.Y = MathF.Sqrt(m_jumpHeight * -2 * Physics.Physics.Gravity) * 0.001f;
+                m_physicsBody.m_velocity.Y = MathF.Sqrt(m_jumpHeight * -2 * Physics.Physics.Gravity) * 0.007f;
                 m_jumped = false;
                 m_jumpBufferTimer = 0;
             }
 
             if (m_grounded)
-                m_groundSpeed = moveXZ.Length / Time.m_deltaTime;
+                m_groundSpeed = m_physicsBody.m_velocity.Xz.Length / Time.m_deltaTime;
         }
-        private void Gravity()
+        private void Grounded()
         {
             m_grounded = (m_physicsBody.m_collisionFlags & CollisionFlags.CollisionDown) == CollisionFlags.CollisionDown;
-
-            m_physicsBody.m_velocity.Y -= 0.00001f;
-
-            float last = mininiasdniasnd;
-            mininiasdniasnd = MathF.Min(mininiasdniasnd, m_physicsBody.m_velocity.Y);
-
-            if (last != mininiasdniasnd)
-                Console.WriteLine(mininiasdniasnd);
         }
     }
 }

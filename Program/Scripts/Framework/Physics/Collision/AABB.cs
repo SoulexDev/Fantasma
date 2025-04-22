@@ -234,6 +234,8 @@ namespace Fantasma.Physics
                     normal.Z = MathF.Sign(dif.Z);
                 }
 
+                Console.WriteLine($"normal: {normal}, hitpoint: {hitPoint}");
+
                 returnHit = new RaycastHit(normal, hitPoint);
             }
             else

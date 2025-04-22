@@ -1,4 +1,5 @@
-﻿using Fantasma.Generation;
+﻿using Fantasma.Framework;
+using Fantasma.Generation;
 using Fantasma.Globals;
 using OpenTK.Mathematics;
 using System;
@@ -6,11 +7,11 @@ using System.Collections.Generic;
 
 namespace Fantasma.Physics
 {
-    public class PhysicsBody
+    public class PhysicsBody : FantasmaObject
     {
+        public bool m_useGravity = true;
         public Vector3 m_position = Vector3.Zero;
         public Vector3 m_velocity = Vector3.Zero;
-        private Vector3 m_lastVelocity = Vector3.Zero;
 
         public AABB m_aabb;
         public CollisionFlags m_collisionFlags;
@@ -34,11 +35,15 @@ namespace Fantasma.Physics
         {
             m_velocity += force;
         }
+        public override void Update()
+        {
+            m_velocity.Y += Physics.Gravity * Time.m_deltaTime * Time.m_deltaTime;
+            Move();
+        }
         public void Move()
         {
             Vector3 moveVector = m_velocity;
             Vector3 originalVector = moveVector;
-            //m_collisionFlags = 0;
 
             List<AABB> collisionChecks = WorldManager.GetColliders(m_aabb.Expand(m_velocity.X, m_velocity.Y, m_velocity.Z).Grow(1, 1, 1));
 

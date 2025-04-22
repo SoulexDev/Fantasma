@@ -21,9 +21,9 @@ namespace Fantasma.Framework
             m_viewMatrix = Matrix4.LookAt(m_transform.position, m_transform.position + m_transform.forward, m_transform.up);
             m_projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegToRad * m_fov, Core.m_aspect, m_near, m_far);
         }
-        public Ray GetViewportRay()
+        public Ray GetViewportRay(float rayMagnitude)
         {
-            return new Ray(m_transform.position, m_transform.position + m_transform.forward);
+            return new Ray(m_transform.position, m_transform.forward * rayMagnitude);
         }
     }
 }

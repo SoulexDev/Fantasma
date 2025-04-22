@@ -58,5 +58,10 @@ namespace Fantasma.Globals
             returnValue.Z = (int)MathF.Floor((float)pos.Z / WorldParameters.m_chunkSize);
             return returnValue;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3i LocalVoxelCoord(Vector3 pos)
+        {
+            return (Vector3i)pos.Floor();
+        }
     }
 }
