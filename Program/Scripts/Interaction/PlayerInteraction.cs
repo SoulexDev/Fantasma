@@ -5,6 +5,7 @@ using Fantasma.Globals;
 using Fantasma.Physics;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using System;
 
 namespace Fantasma.Scripts
 {
@@ -23,7 +24,9 @@ namespace Fantasma.Scripts
         {
             RaycastHit rayHit = WorldManager.GetRayHit(Core.m_currentCamera.GetViewportRay(1));
 
-            m_hoverBox.m_transform.position = rayHit.voxelHitPoint;
+            m_hoverBox.m_renderable.transform.position = rayHit.voxelHitPoint;
+
+            //Console.WriteLine($"hover pos: {m_hoverBox.m_renderable.transform.position}, ray pos:{rayHit.voxelHitPoint}");
 
             if (rayHit.hit)
             {

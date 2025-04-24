@@ -75,13 +75,11 @@ namespace Fantasma.Generation
         //        item.Value.MeshAll();
         //    }
         //}
-        public ChunkColumn AddChunk(Vector3i position, Vector2i chunkPosition)
+        public async void AddChunk(Vector3i position, Vector2i chunkPosition)
         {
             ChunkColumn column = new ChunkColumn();
             m_chunkColumns.Add(chunkPosition, column);
-            column.AggresiveGenerate(position);
-
-            return column;
+            await column.AggresiveGenerate(position);
         }
         public static List<AABB> GetColliders(AABB bounds)
         {
@@ -121,7 +119,8 @@ namespace Fantasma.Generation
                         continue;
                     }
 
-                    ChunkColumn column = m_instance.AddChunk(chunkPos * WorldParameters.m_chunkSize, chunkPos.Xz);
+                    m_instance.AddChunk(chunkPos * WorldParameters.m_chunkSize, chunkPos.Xz);
+                    ChunkColumn column = m_instance.m_chunkColumns[chunkPos.Xz];
                     newVisibleChunkColumns.Add(column);
                 }
             }

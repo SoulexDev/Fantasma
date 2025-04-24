@@ -14,6 +14,8 @@ namespace Fantasma.Generation
         public bool m_generating;
         public bool m_generated;
 
+        public bool m_meshed;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public SubChunk GetChunk(int i)
         {
@@ -42,17 +44,17 @@ namespace Fantasma.Generation
         {
             
         }
-        public void AggresiveGenerate(Vector3i position)
+        public async Task AggresiveGenerate(Vector3i position)
         {
             for (int i = 0; i < 4; i++)
             {
                 SubChunk chunk = new SubChunk(position, WorldManager.m_instance);
                 m_chunks.Add(chunk);
-                chunk.ForceGenerate();
+                await chunk.ForceGenerate();
 
                 position.Y += WorldParameters.m_chunkSize;
-                
             }
+            m_generated = true;
         }
         public void MeshAll()
         {
@@ -60,7 +62,7 @@ namespace Fantasma.Generation
             {
                 chunk.MeshChunk(null);
             }
-            m_generated = true;
+            m_meshed = true;
         }
         //public void SetAllMeshes()
         //{

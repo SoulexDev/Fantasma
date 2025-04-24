@@ -24,11 +24,11 @@ namespace Fantasma.Data
         {
             m_blockType = (BlockType)(1 << blockType);
         }
-        public void SetBlockEvent(BlockType[] fromChunkArray, Vector3i eventCoord, Vector3i thisCoord, int thisIndex)
+        public void SetBlockEvent(BlockEvent blockEvent)
         {
-            OnBlockEvent(fromChunkArray, eventCoord - thisCoord, thisIndex);
+            OnBlockEvent(blockEvent);
         }
-        public virtual void OnBlockEvent(BlockType[] fromChunkArray, Vector3i relativeEventCoord, int thisIndex)
+        public virtual void OnBlockEvent(BlockEvent blockEvent)
         {
 
         }
@@ -126,7 +126,7 @@ namespace Fantasma.Data
         {
             RegisterBlock(new Block(BlockType.Nothing).SetOpaque());
             RegisterBlock(new Block(BlockType.Air));
-            RegisterBlock(new Block(BlockType.Dirt).SetOpaque().SetCullsSelf().SetUVs(0).SetToughness(1).SetLornName("dirt").SetName("Dirt"));
+            RegisterBlock(new BlockDirt(BlockType.Dirt).SetOpaque().SetCullsSelf().SetUVs(0).SetToughness(1).SetLornName("dirt").SetName("Dirt"));
             RegisterBlock(new Block(BlockType.Grass).SetOpaque().SetCullsSelf().SetUVSides(1).SetUVUp(2).SetUVDown(0).SetToughness(1).SetLornName("grass").SetName("Grass"));
             RegisterBlock(new Block(BlockType.Wood).SetOpaque().SetCullsSelf().SetUVSides(3).SetUVUpDown(4).SetToughness(2).SetLornName("wood").SetName("Wood"));
             RegisterBlock(new Block(BlockType.Planks).SetOpaque().SetCullsSelf().SetUVs(5).SetToughness(2).SetLornName("woodplanks").SetName("Wood Planks"));

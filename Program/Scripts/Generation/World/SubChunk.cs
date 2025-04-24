@@ -40,7 +40,7 @@ namespace Fantasma.Generation
             m_opaque = RenderableFactory.RegisterRenderable(m_transform, new Mesh(), ShaderContainer.m_standardShader, RenderableType.Opaque);
             m_transparent = RenderableFactory.RegisterRenderable(m_transform, new Mesh(), ShaderContainer.m_standardTransparentShader, RenderableType.Transparent);
         }
-        public void ForceGenerate()
+        public async Task ForceGenerate()
         {
             for (int i = 0; i < WorldParameters.m_chunkSizeCbd; i++)
             {
@@ -50,14 +50,13 @@ namespace Fantasma.Generation
                 if (m_blocks[i] != BlockType.Air)
                     m_allAir = false;
             }
+            await Task.Yield();
         }
         public void ChangeBlock(Vector3i voxelPos, BlockType blockType)
         {
-            m_blocks[CoordinateUtils.ThreeToIndex(voxelPos, WorldParameters.m_chunkSize)] = blockType;
+            int blockIndex = CoordinateUtils.ThreeToIndex(voxelPos, WorldParameters.m_chunkSize);
 
             Vector3i otherVoxelPos;
-
-            //Console.WriteLine($"touched block pos: {voxelPos}");
 
             for (int i = 0; i < 6; i++)
             {
@@ -67,9 +66,10 @@ namespace Fantasma.Generation
                 if(!pair.exists)
                     continue;
 
-                //Console.WriteLine($"block type: {pair.block.m_blockType}, position: {otherVoxelPos}");
-                pair.block.SetBlockEvent(pair.subChunk.m_blocks, m_position + voxelPos, otherVoxelPos, pair.blockIndex);
+                pair.block.SetBlockEvent(new BlockEvent(0, m_position + voxelPos, otherVoxelPos, this, pair.subChunk, blockIndex, pair.blockIndex));
             }
+
+            m_blocks[blockIndex] = blockType;
 
             if (blockType != BlockType.Air)
                 m_allAir = false;
