@@ -22,8 +22,12 @@ namespace Fantasma.Globals
     {
         NoCollisionFlags = Nothing | Air | Water | Lava | ShortGrass,
         TransparentFlags = Nothing | Air | Glass | Water | ShortGrass,
+        CantBreakFlags = Nothing | Air | Water | Lava,
+        ReplacableFlags = Nothing | Air | Water | Lava | ShortGrass,
         BillboardFlags = ShortGrass,
-        Nothing = 1, Air = 2, Dirt = 4, Grass = 8, Stone = 16, Sand = 32, Wood = 64, Glass = 128, Water = 256, Lava = 512, ShortGrass = 1024
+
+        Nothing = 1, Air = 2, Dirt = 4, Grass = 8, Stone = 16, Sand = 32, Wood = 64, Glass = 128, Water = 256, Lava = 512, ShortGrass = 1024, Planks = 2048, Cobblestone = 4096,
+        Leaves = 8192,
     }
     public enum CollisionFlags
     {

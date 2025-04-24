@@ -1,4 +1,5 @@
-﻿using Fantasma.Framework;
+﻿using Fantasma.Data;
+using Fantasma.Framework;
 using Fantasma.Generation;
 using Fantasma.Graphics;
 using Fantasma.Scripts;
@@ -32,6 +33,9 @@ namespace Fantasma
         private PlayerController m_playerController;
         private PlayerInteraction m_playerInteraction;
 
+        private float m_frameTimer;
+        private float m_lastFrameTime;
+
         public Core(int width, int height, string title) :
             base(GameWindowSettings.Default, new NativeWindowSettings() { ClientSize = (width, height), Title = title })
         {
@@ -53,7 +57,8 @@ namespace Fantasma
             m_input = new Input();
 
             m_worldManager = new WorldManager();
-            m_worldManager.GenerateAll();
+            Block.RegisterBlocks();
+            //m_worldManager.GenerateAll();
 
             m_playerController = new PlayerController();
             m_playerInteraction = new PlayerInteraction();
@@ -66,6 +71,18 @@ namespace Fantasma
             m_input.SetKeyboardState(KeyboardState);
             m_input.SetMouseState(MouseState);
             m_input.SetInputVariables();
+
+            m_frameTimer += Time.m_deltaTime;
+            if(m_frameTimer >= 0.05f)
+            {
+                m_time.SetFixedDeltaTime(0.05f);
+                m_frameTimer -= 0.05f;
+
+                for (int i = 0; i < m_objects.Count; i++)
+                {
+                    m_objects[i].FixedUpdate();
+                }
+            }
 
             for (int i = 0; i < m_objects.Count; i++)
             {
@@ -105,6 +122,8 @@ namespace Fantasma
             ShaderContainer.m_standardShader.Dispose();
             ShaderContainer.m_standardTransparentShader.Dispose();
             ShaderContainer.m_wireShader.Dispose();
+
+            RenderableFactory.Dispose();
 
             m_objects.ForEach(o=>o.Dispose(false));
             m_objects.Clear();

@@ -26,5 +26,24 @@ namespace Fantasma.Graphics
 
             return rend;
         }
+        public static void UnRegisterRenderable(Renderable renderable, RenderableType renderableType)
+        {
+            switch (renderableType)
+            {
+                case RenderableType.Opaque:
+                    m_opaqueRenderables.Remove(renderable);
+                    break;
+                case RenderableType.Transparent:
+                    m_transparentRenderables.Remove(renderable);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void Dispose()
+        {
+            m_opaqueRenderables.ForEach(r=>r.mesh.Dispose());
+            m_transparentRenderables.ForEach(r=>r.mesh.Dispose());
+        }
     }
 }

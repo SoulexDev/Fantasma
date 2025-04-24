@@ -28,6 +28,10 @@ namespace Fantasma.Framework
         {
 
         }
+        public virtual void FixedUpdate()
+        {
+
+        }
         public virtual void OnRender()
         {
 

@@ -108,6 +108,17 @@ namespace Fantasma.Physics
             m_minZ += value.Z;
             m_maxZ += value.Z;
         }
+        public void SetCenter(Vector3 position)
+        {
+            m_minX = position.X - GetWidth() * 0.5f;
+            m_maxX = position.X + GetWidth() * 0.5f;
+
+            m_minY = position.Y - GetHeight() * 0.5f;
+            m_maxY = position.Y + GetHeight() * 0.5f;
+
+            m_minZ = position.Z - GetDepth() * 0.5f;
+            m_maxZ = position.Z + GetDepth() * 0.5f;
+        }
         public Vector3 GetSize()
         {
             return new Vector3(GetWidth(), GetHeight(), GetDepth());
@@ -185,64 +196,66 @@ namespace Fantasma.Physics
             }
             return deltaZ;
         }
-        public RaycastHit GetRayHit(Ray ray)
-        {
-            RaycastHit returnHit;
+        #region for later
+        //public RaycastHit GetRayHit(Ray ray)
+        //{
+        //    RaycastHit returnHit;
 
-            float tmin;
-            float tmax;
+        //    float tmin;
+        //    float tmax;
 
-            float tx1 = (m_minX - ray.origin.X) * ray.invDirection.X;
-            float tx2 = (m_maxX - ray.origin.X) * ray.invDirection.X;
+        //    float tx1 = (m_minX - ray.origin.X) * ray.invDirection.X;
+        //    float tx2 = (m_maxX - ray.origin.X) * ray.invDirection.X;
 
-            tmin = MathF.Min(tx1, tx2);
-            tmax = MathF.Max(tx1, tx2);
+        //    tmin = MathF.Min(tx1, tx2);
+        //    tmax = MathF.Max(tx1, tx2);
 
-            float ty1 = (m_minY - ray.origin.Y) * ray.invDirection.Y;
-            float ty2 = (m_maxY - ray.origin.Y) * ray.invDirection.Y;
+        //    float ty1 = (m_minY - ray.origin.Y) * ray.invDirection.Y;
+        //    float ty2 = (m_maxY - ray.origin.Y) * ray.invDirection.Y;
 
-            tmin = MathF.Min(tmin, MathF.Min(ty1, ty2));
-            tmax = MathF.Max(tmax, MathF.Max(ty1, ty2));
+        //    tmin = MathF.Min(tmin, MathF.Min(ty1, ty2));
+        //    tmax = MathF.Max(tmax, MathF.Max(ty1, ty2));
 
-            float tz1 = (m_minZ - ray.origin.Z) * ray.invDirection.Z;
-            float tz2 = (m_maxZ - ray.origin.Z) * ray.invDirection.Z;
+        //    float tz1 = (m_minZ - ray.origin.Z) * ray.invDirection.Z;
+        //    float tz2 = (m_maxZ - ray.origin.Z) * ray.invDirection.Z;
 
-            tmin = MathF.Min(tmin, MathF.Min(tz1, tz2));
-            tmax = MathF.Max(tmax, MathF.Max(tz1, tz2));
+        //    tmin = MathF.Min(tmin, MathF.Min(tz1, tz2));
+        //    tmax = MathF.Max(tmax, MathF.Max(tz1, tz2));
 
-            if (tmax >= tmin)
-            {
-                Vector3 hitPoint = (tmin < 0 ? tmax : tmin) * ray.direction + ray.origin;
-                Vector3 normal = Vector3.Zero;
+        //    if (tmax >= tmin)
+        //    {
+        //        Vector3 hitPoint = (tmin < 0 ? tmax : tmin) * ray.direction + ray.origin;
+        //        Vector3 normal = Vector3.Zero;
 
-                Vector3 dif = (hitPoint - GetCenter()) / GetSize();
+        //        Vector3 dif = (hitPoint - GetCenter()) / GetSize();
 
-                float x = MathF.Abs(dif.X);
-                float y = MathF.Abs(dif.Y);
-                float z = MathF.Abs(dif.Z);
+        //        float x = MathF.Abs(dif.X);
+        //        float y = MathF.Abs(dif.Y);
+        //        float z = MathF.Abs(dif.Z);
 
-                if(x >= y && x >= z)
-                {
-                    normal.X = MathF.Sign(dif.X);
-                }
-                else if (y >= z && y >= x)
-                {
-                    normal.Y = MathF.Sign(dif.Y);
-                }
-                else if(z >= y && z >= x)
-                {
-                    normal.Z = MathF.Sign(dif.Z);
-                }
+        //        if(x >= y && x >= z)
+        //        {
+        //            normal.X = MathF.Sign(dif.X);
+        //        }
+        //        else if (y >= z && y >= x)
+        //        {
+        //            normal.Y = MathF.Sign(dif.Y);
+        //        }
+        //        else if(z >= y && z >= x)
+        //        {
+        //            normal.Z = MathF.Sign(dif.Z);
+        //        }
 
-                Console.WriteLine($"normal: {normal}, hitpoint: {hitPoint}");
+        //        Console.WriteLine($"normal: {normal}, hitpoint: {hitPoint}");
 
-                returnHit = new RaycastHit(normal, hitPoint);
-            }
-            else
-                returnHit = new RaycastHit();
+        //        returnHit = new RaycastHit(normal, hitPoint, hitPoint, 0, );
+        //    }
+        //    else
+        //        returnHit = new RaycastHit();
 
-            return returnHit;
-        }
+        //    return returnHit;
+        //}
+        #endregion
         public bool Intersects(AABB against)
         {
             return IntersectsX(against) && IntersectsY(against) && IntersectsZ(against);

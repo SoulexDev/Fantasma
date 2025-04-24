@@ -33,10 +33,10 @@ namespace Fantasma.Generation
             new int[] { 4, 5, 1, 0 },
             new int[] { 2, 3, 7, 6 }
         };
-        public static Renderable CreateBox(Transform transform, Shader shader)
+        public static Renderable CreateBox(Transform transform, Shader shader, float scale = 1)
         {
             Mesh m = new Mesh();
-            MeshData data = new MeshData(new float[24 * 8], new int[36], VertexAttribute.Position);
+            MeshData data = new MeshData(new float[24 * 3], new int[36], VertexAttribute.Position);
 
             int vertexOffset = 0;
             int triangleIndex = 0;
@@ -44,13 +44,14 @@ namespace Fantasma.Generation
 
             for (int i = 0; i < 6; i++)
             {
-                BuildFace(transform.localPosition, data, ref vertexOffset, ref triangleIndex, ref vertexIndex, i);
+                BuildFace(transform.position, data, ref vertexOffset, ref triangleIndex, ref vertexIndex, i, scale);
             }
 
             m.Set(data);
             return RenderableFactory.RegisterRenderable(transform, m, shader, RenderableType.Opaque);
         }
-        private static void BuildFace(Vector3 position, MeshData data, ref int vertexOffset, ref int triangleIndex, ref int vertexIndex, int direction)
+        private static void BuildFace(Vector3 position, MeshData data, ref int vertexOffset, ref int triangleIndex, ref int vertexIndex, 
+            int direction, float scale)
         {
             Vector3 faceVertex;
             for (int i = 0; i < 4; i++)
@@ -58,26 +59,17 @@ namespace Fantasma.Generation
                 faceVertex = m_vertices[m_triangles[direction][i]];
 
                 /// Vertex Position
-                data.m_vertices[vertexOffset++] = position.X + faceVertex.X;
-                data.m_vertices[vertexOffset++] = position.Y + faceVertex.Y;
-                data.m_vertices[vertexOffset++] = position.Z + faceVertex.Z;
-
-                /// Vertex Color
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
-
-                /// Vertex UV
-                data.m_vertices[vertexOffset++] = m_uvs[i].X;
-                data.m_vertices[vertexOffset++] = m_uvs[i].Y;
+                data.vertices[vertexOffset++] = (position.X + faceVertex.X) * scale;
+                data.vertices[vertexOffset++] = (position.Y + faceVertex.Y) * scale;
+                data.vertices[vertexOffset++] = (position.Z + faceVertex.Z) * scale;
             }
 
-            data.m_indicies[triangleIndex] = vertexIndex + 3;
-            data.m_indicies[triangleIndex + 1] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 2] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 3] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 4] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 5] = vertexIndex;
+            data.indicies[triangleIndex] = vertexIndex + 3;
+            data.indicies[triangleIndex + 1] = vertexIndex + 1;
+            data.indicies[triangleIndex + 2] = vertexIndex + 2;
+            data.indicies[triangleIndex + 3] = vertexIndex + 2;
+            data.indicies[triangleIndex + 4] = vertexIndex + 1;
+            data.indicies[triangleIndex + 5] = vertexIndex;
 
             triangleIndex += 6;
             vertexIndex += 4;

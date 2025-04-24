@@ -1,7 +1,5 @@
-﻿using OpenTK.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Fantasma.Globals;
+using OpenTK.Mathematics;
 
 namespace Fantasma.Physics
 {
@@ -9,12 +7,18 @@ namespace Fantasma.Physics
     {
         public bool hit;
         public Vector3 normal;
+        public Vector3i voxelHitPoint;
         public Vector3 hitPoint;
+        public float distance;
+        public BlockType blockType;
 
-        public RaycastHit(Vector3 normal, Vector3 hitPoint)
+        public RaycastHit(Vector3 normal, Vector3i voxelHitPoint, Vector3 hitPoint, float distance, BlockType blockType)
         {
             this.normal = normal;
+            this.voxelHitPoint = voxelHitPoint;
             this.hitPoint = hitPoint;
+            this.distance = distance;
+            this.blockType = blockType;
             hit = true;
         }
     }

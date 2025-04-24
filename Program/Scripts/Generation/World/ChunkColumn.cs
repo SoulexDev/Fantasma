@@ -1,7 +1,9 @@
-﻿using OpenTK.Mathematics;
+﻿using Fantasma.Framework;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Fantasma.Generation
 {
@@ -49,6 +51,7 @@ namespace Fantasma.Generation
                 chunk.ForceGenerate();
 
                 position.Y += WorldParameters.m_chunkSize;
+                
             }
         }
         public void MeshAll()
@@ -57,10 +60,21 @@ namespace Fantasma.Generation
             {
                 chunk.MeshChunk(null);
             }
+            m_generated = true;
         }
-        public void Render()
+        //public void SetAllMeshes()
+        //{
+        //    foreach (SubChunk chunk in m_chunks)
+        //    {
+        //        chunk.SetMesh();
+        //    }
+        //}
+        public void Dispose()
         {
-            //m_chunks.ForEach(c=>c.Render());
+            foreach (SubChunk chunk in m_chunks)
+            {
+                chunk.Dispose();
+            }
         }
     }
 }

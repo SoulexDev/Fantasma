@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MviS6HrIyop0Jb6CCIQtTx4+FdWPA4r+aGdUGvTg44eZfflO2PjfcjByVpo1stEaFZ1drStDfYSFaq8wPQvECQ==",
+  "dgSpecHash": "nHOepqN/508=",
   "success": true,
-  "projectFilePath": "C:\\GitRepos\\Fantasma\\Fantasma.csproj",
+  "projectFilePath": "H:\\OpenTKProjects\\Fantasma\\Fantasma.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\power\\.nuget\\packages\\opentk\\4.9.4\\opentk.4.9.4.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\opentk.audio.openal\\4.9.4\\opentk.audio.openal.4.9.4.nupkg.sha512",
@@ -16,11 +16,7 @@
     "C:\\Users\\power\\.nuget\\packages\\opentk.windowing.desktop\\4.9.4\\opentk.windowing.desktop.4.9.4.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\4.9.4\\opentk.windowing.graphicslibraryframework.4.9.4.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\stbimagesharp\\2.30.15\\stbimagesharp.2.30.15.nupkg.sha512",
-    "C:\\Users\\power\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\power\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\power\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\power\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\power\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+    "C:\\Users\\power\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

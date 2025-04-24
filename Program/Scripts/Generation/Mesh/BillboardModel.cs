@@ -57,26 +57,26 @@ namespace Fantasma.Generation
                 //aoValue = m_aoValues[aos[i]];
 
                 /// Vertex Position
-                data.m_vertices[vertexOffset++] = position.X + faceVertex.X;
-                data.m_vertices[vertexOffset++] = position.Y + faceVertex.Y;
-                data.m_vertices[vertexOffset++] = position.Z + faceVertex.Z;
+                data.vertices[vertexOffset++] = position.X + faceVertex.X;
+                data.vertices[vertexOffset++] = position.Y + faceVertex.Y;
+                data.vertices[vertexOffset++] = position.Z + faceVertex.Z;
 
 
                 /// Vertex AO
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
 
                 /// Vertex UV
-                data.m_vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
-                data.m_vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
             }
-            data.m_indicies[triangleIndex] = vertexIndex + 3;
-            data.m_indicies[triangleIndex + 1] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 2] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 3] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 4] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 5] = vertexIndex;
+            data.indicies[triangleIndex] = vertexIndex + 3;
+            data.indicies[triangleIndex + 1] = vertexIndex + 1;
+            data.indicies[triangleIndex + 2] = vertexIndex + 2;
+            data.indicies[triangleIndex + 3] = vertexIndex + 2;
+            data.indicies[triangleIndex + 4] = vertexIndex + 1;
+            data.indicies[triangleIndex + 5] = vertexIndex;
 
             triangleIndex += 6;
             vertexIndex += 4;
@@ -87,26 +87,26 @@ namespace Fantasma.Generation
                 //aoValue = m_aoValues[aos[i]];
 
                 /// Vertex Position
-                data.m_vertices[vertexOffset++] = position.X + faceVertex.X;
-                data.m_vertices[vertexOffset++] = position.Y + faceVertex.Y;
-                data.m_vertices[vertexOffset++] = position.Z + faceVertex.Z;
+                data.vertices[vertexOffset++] = position.X + faceVertex.X;
+                data.vertices[vertexOffset++] = position.Y + faceVertex.Y;
+                data.vertices[vertexOffset++] = position.Z + faceVertex.Z;
 
                 /// Vertex AO
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
-                data.m_vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
+                data.vertices[vertexOffset++] = 1;
 
                 /// Vertex UV
-                data.m_vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
-                data.m_vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
             }
 
-            data.m_indicies[triangleIndex] = vertexIndex + 3;
-            data.m_indicies[triangleIndex + 1] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 2] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 3] = vertexIndex + 2;
-            data.m_indicies[triangleIndex + 4] = vertexIndex + 1;
-            data.m_indicies[triangleIndex + 5] = vertexIndex;
+            data.indicies[triangleIndex] = vertexIndex + 3;
+            data.indicies[triangleIndex + 1] = vertexIndex + 1;
+            data.indicies[triangleIndex + 2] = vertexIndex + 2;
+            data.indicies[triangleIndex + 3] = vertexIndex + 2;
+            data.indicies[triangleIndex + 4] = vertexIndex + 1;
+            data.indicies[triangleIndex + 5] = vertexIndex;
 
             triangleIndex += 6;
             vertexIndex += 4;

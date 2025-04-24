@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = Fantasma
-build_property.ProjectDir = C:\GitRepos\Fantasma\
+build_property.ProjectDir = H:\OpenTKProjects\Fantasma\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

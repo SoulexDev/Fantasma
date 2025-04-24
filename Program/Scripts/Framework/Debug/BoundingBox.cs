@@ -3,24 +3,28 @@ using Fantasma.Framework;
 using Fantasma.Generation;
 using Fantasma.Graphics;
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 
 namespace Fantasma.Debug
 {
     public class BoundingBox : FantasmaObject
     {
-        private AABB m_bounds;
+        public AABB m_bounds;
+        public Renderable m_renderable;
+
+        private Vector3 m_lastPosition;
         public void Create(AABB bounds)
         {
-            Renderable renderable = BoxModel.CreateBox(m_transform, ShaderContainer.m_wireShader);
-            renderable.m_mesh.m_primitiveType = PrimitiveType.Lines;
+            m_bounds = bounds;
+
+            m_renderable = BoxModel.CreateBox(m_transform, ShaderContainer.m_wireShader, 1.005f);
+            m_renderable.mesh.m_primitiveType = PrimitiveType.Lines;
         }
         public override void Update()
         {
-            if(m_bounds != null)
+            if (m_bounds != null)
             {
-                m_transform.localScale.X = m_bounds.GetWidth();
-                m_transform.localScale.Y = m_bounds.GetHeight();
-                m_transform.localScale.Z = m_bounds.GetDepth();
+                m_bounds.SetCenter(m_transform.position);
             }
         }
     }

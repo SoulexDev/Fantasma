@@ -1,7 +1,4 @@
 ﻿using OpenTK.Graphics.OpenGL4;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Fantasma.Graphics
 {
@@ -18,7 +15,8 @@ namespace Fantasma.Graphics
         public override void Use()
         {
             GL.Disable(EnableCap.Blend);
-            GL.Disable(EnableCap.CullFace);
+            //GL.Disable(EnableCap.CullFace);
+            GL.LineWidth(5);
 
             base.Use();
         }

@@ -130,9 +130,9 @@ namespace Fantasma.Generation
             for (int i = 0; i < 4; i++)
             {
                 aoIndicies = m_faceIndicies[i];
-                BlockData side1 = worldManager.GetBlockData(m_faceAos[dir][aoIndicies.X] + position);
-                BlockData side2 = worldManager.GetBlockData(m_faceAos[dir][aoIndicies.Z] + position);
-                BlockData corner = worldManager.GetBlockData(m_faceAos[dir][aoIndicies.Y] + position);
+                Block side1 = worldManager.GetBlock(m_faceAos[dir][aoIndicies.X] + position);
+                Block side2 = worldManager.GetBlock(m_faceAos[dir][aoIndicies.Z] + position);
+                Block corner = worldManager.GetBlock(m_faceAos[dir][aoIndicies.Y] + position);
 
                 int aoState = GetAOState(
                     side1.m_opaque ? 1 : 0,
@@ -143,7 +143,7 @@ namespace Fantasma.Generation
                 aos[i] = aoState;
             }
 
-            HandleFlip(aos, data.m_indicies, triangleIndex, vertexIndex);
+            HandleFlip(aos, data.indicies, triangleIndex, vertexIndex);
 
             for (int i = 0; i < 4; i++)
             {
@@ -151,20 +151,20 @@ namespace Fantasma.Generation
                 aoValue = m_aoValues[aos[i]];
 
                 /// Vertex Position
-                data.m_vertices[vertexOffset++] = position.X + faceVertex.X;
-                data.m_vertices[vertexOffset++] = position.Y + faceVertex.Y;
-                data.m_vertices[vertexOffset++] = position.Z + faceVertex.Z;
+                data.vertices[vertexOffset++] = position.X + faceVertex.X;
+                data.vertices[vertexOffset++] = position.Y + faceVertex.Y;
+                data.vertices[vertexOffset++] = position.Z + faceVertex.Z;
 
                 //Console.WriteLine("vertex pos: " + position + faceVertex);
 
                 /// Vertex AO
-                data.m_vertices[vertexOffset++] = aoValue;
-                data.m_vertices[vertexOffset++] = aoValue;
-                data.m_vertices[vertexOffset++] = aoValue;
+                data.vertices[vertexOffset++] = aoValue;
+                data.vertices[vertexOffset++] = aoValue;
+                data.vertices[vertexOffset++] = aoValue;
 
                 /// Vertex UV
-                data.m_vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
-                data.m_vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.X + m_uvs[i].X) * TextureAtlasUtils.m_textureScale;
+                data.vertices[vertexOffset++] = (uv.Y + m_uvs[i].Y) * TextureAtlasUtils.m_textureScale;
             }
             triangleIndex += 6;
             vertexIndex += 4;
@@ -190,29 +190,6 @@ namespace Fantasma.Generation
                 indicies[triangleIndex + 3] = vertexIndex + 2;
                 indicies[triangleIndex + 4] = vertexIndex + 1;
                 indicies[triangleIndex + 5] = vertexIndex;
-            }
-        }
-        public static void HandleFlip(int[] aos, List<int> indicies, int triangleIndex, int vertexIndex)
-        {
-            if (MathF.Min(aos[0], aos[3]) > MathF.Min(aos[1], aos[2]))
-            {
-                //flipped
-                indicies.Add(vertexIndex + 2);
-                indicies.Add(vertexIndex + 3);
-                indicies.Add(vertexIndex);
-                indicies.Add(vertexIndex + 3);
-                indicies.Add(vertexIndex + 1);
-                indicies.Add(vertexIndex);
-            }
-            else
-            {
-                //normal
-                indicies.Add(vertexIndex + 3);
-                indicies.Add(vertexIndex + 1);
-                indicies.Add(vertexIndex + 2);
-                indicies.Add(vertexIndex + 2);
-                indicies.Add(vertexIndex + 1);
-                indicies.Add(vertexIndex);
             }
         }
         public static int GetAOState(int side1, int side2, int corner)

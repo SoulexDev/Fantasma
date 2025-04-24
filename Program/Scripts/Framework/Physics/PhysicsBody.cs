@@ -2,7 +2,6 @@
 using Fantasma.Generation;
 using Fantasma.Globals;
 using OpenTK.Mathematics;
-using System;
 using System.Collections.Generic;
 
 namespace Fantasma.Physics
@@ -35,10 +34,9 @@ namespace Fantasma.Physics
         {
             m_velocity += force;
         }
-        public override void Update()
+        public override void FixedUpdate()
         {
-            m_velocity.Y += Physics.Gravity * Time.m_deltaTime * Time.m_deltaTime;
-            Move();
+            m_velocity.Y += Physics.Gravity * Time.m_fixedDeltaTime * Time.m_fixedDeltaTime;
         }
         public void Move()
         {
@@ -70,22 +68,11 @@ namespace Fantasma.Physics
 
             if (moveVector.X != originalVector.X)
             {
-                //if (originalVector.X > 0)
-                //    m_collisionFlags |= CollisionFlags.CollisionRight;
-                //else
-                //    m_collisionFlags |= CollisionFlags.CollisionLeft;
-
                 m_velocity.X = 0;
             }
 
             if (moveVector.Y != originalVector.Y)
             {
-                //Console.WriteLine("i hit shit");
-                //if (originalVector.Y > 0)
-                //    m_collisionFlags |= CollisionFlags.CollisionUp;
-                //else
-                //    m_collisionFlags |= CollisionFlags.CollisionDown;
-
                 m_velocity.Y = 0;
             }
 
@@ -93,11 +80,6 @@ namespace Fantasma.Physics
 
             if (moveVector.Z != originalVector.Z)
             {
-                //if (originalVector.Z > 0)
-                //    m_collisionFlags |= CollisionFlags.CollisionForward;
-                //else
-                //    m_collisionFlags |= CollisionFlags.CollisionBack;
-
                 m_velocity.Z = 0;
             }
 

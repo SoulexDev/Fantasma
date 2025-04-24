@@ -6,15 +6,19 @@ namespace Fantasma.Graphics
 {
     public struct MeshData
     {
-        public float[] m_vertices;
-        public int[] m_indicies;
-        public VertexAttribute[] m_attributes;
+        public float[] vertices;
+        public int[] indicies;
+        public VertexAttribute[] attributes;
+
+        public bool notEmpty;
 
         public MeshData(float[] vertices, int[] indicies, params VertexAttribute[] attributes)
         {
-            m_vertices = vertices;
-            m_indicies = indicies;
-            m_attributes = attributes;
+            this.vertices = vertices;
+            this.indicies = indicies;
+            this.attributes = attributes;
+
+            notEmpty = true;
         }
     }
     public class Mesh
@@ -22,6 +26,10 @@ namespace Fantasma.Graphics
         private int m_vertexBufferObject;
         private int m_vertexArrayObject;
         private int m_elementBufferObject;
+
+        private bool m_generatedVBO;
+        private bool m_generatedVAO;
+        private bool m_generatedEBO;
 
         private int m_floatSize = sizeof(float);
 
@@ -34,33 +42,39 @@ namespace Fantasma.Graphics
         public void Set(MeshData data)
         {
             m_generated = false;
-            if (data.m_attributes.Length == 0)
+            if (data.attributes.Length == 0)
             {
                 Console.WriteLine("Mesh attributes count is 0. Mesh was not created");
                 return;
             }
-            m_vertices = data.m_vertices;
-            m_indicies = data.m_indicies;
+            m_vertices = data.vertices;
+            m_indicies = data.indicies;
 
             byte stride = 0;
             byte offset = 0;
 
-            m_vertexBufferObject = GL.GenBuffer();
-            m_vertexArrayObject = GL.GenVertexArray();
+            if(!m_generatedVBO)
+                m_vertexBufferObject = GL.GenBuffer();
+
+            if(!m_generatedVAO)
+                m_vertexArrayObject = GL.GenVertexArray();
+
+            m_generatedVBO = true;
+            m_generatedVAO = true;
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, m_vertices.Length * m_floatSize, m_vertices, BufferUsageHint.StaticDraw);
 
             GL.BindVertexArray(m_vertexArrayObject);
 
-            for (int i = 0; i < data.m_attributes.Length; i++)
+            for (int i = 0; i < data.attributes.Length; i++)
             {
-                stride += MeshHelpers.m_vertexAttributeSizes[data.m_attributes[i]];
+                stride += MeshHelpers.m_vertexAttributeSizes[data.attributes[i]];
             }
-            for (int i = 0; i < data.m_attributes.Length; i++)
+            for (int i = 0; i < data.attributes.Length; i++)
             {
                 GL.EnableVertexAttribArray(i);
-                switch (data.m_attributes[i])
+                switch (data.attributes[i])
                 {
                     case VertexAttribute.Position:
                         GL.VertexAttribPointer(i, 3, VertexAttribPointerType.Float, false, stride, offset);
@@ -83,30 +97,31 @@ namespace Fantasma.Graphics
                 }
             }
 
-            m_elementBufferObject = GL.GenBuffer();
+            if(!m_generatedEBO)
+                m_elementBufferObject = GL.GenBuffer();
+
+            m_generatedEBO = true;
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_elementBufferObject);
             GL.BufferData(BufferTarget.ElementArrayBuffer, m_indicies.Length * sizeof(int), m_indicies, BufferUsageHint.StaticDraw);
 
             m_generated = true;
-            //GL.BindVertexArray(0);
-
-            //GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
         public void Render()
         {
             if (!m_generated)
                 return;
+
             GL.BindVertexArray(m_vertexArrayObject);
             GL.DrawElements(m_primitiveType, m_indicies.Length, DrawElementsType.UnsignedInt, 0);
             GL.BindVertexArray(0);
         }
-        //public void Dispose()
-        //{
-        //    GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-        //    GL.DeleteBuffer(m_vertexBufferObject);
+        public void Dispose()
+        {
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.DeleteBuffer(m_vertexBufferObject);
 
-        //    GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
-        //    GL.DeleteBuffer(m_elementBufferObject);
-        //}
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+            GL.DeleteBuffer(m_elementBufferObject);
+        }
     }
 }

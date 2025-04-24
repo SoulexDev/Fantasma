@@ -1,9 +1,7 @@
 ﻿using Fantasma.Generation;
 using OpenTK.Mathematics;
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Fantasma.Globals
 {
