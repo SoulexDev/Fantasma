@@ -36,6 +36,7 @@ namespace Fantasma.Globals
         NoCollisionY = ~(CollisionUp | CollisionDown), 
         NoCollisionZ = ~(CollisionForward | CollisionBack)
     }
+    public enum BlockEventType { Place, Break, Power, UnPower, Update }
     public enum RenderableType { Opaque, Transparent }
     public enum DimensionType { Ideonia, Void }
 

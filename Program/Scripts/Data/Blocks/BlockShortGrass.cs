@@ -1,6 +1,4 @@
 ﻿using Fantasma.Globals;
-using OpenTK.Mathematics;
-using System;
 
 namespace Fantasma.Data
 {
@@ -9,10 +7,14 @@ namespace Fantasma.Data
         public BlockShortGrass(BlockType blockType) : base(blockType) { }
         public override void OnBlockEvent(BlockEvent blockEvent)
         {
-            if(blockEvent.relativeEventCoordinate.Y == -1)
+            if(HasBlockEvent(blockEvent))
             {
                 blockEvent.affectedChunk.m_blocks[blockEvent.affectedBlockIndex] = BlockType.Air;
             }
+        }
+        public override bool HasBlockEvent(BlockEvent blockEvent)
+        {
+            return blockEvent.relativeEventCoordinate.Y == -1 && blockEvent.blockEventType == BlockEventType.Break;
         }
     }
 }

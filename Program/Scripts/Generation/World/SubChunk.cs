@@ -3,8 +3,7 @@ using Fantasma.Framework;
 using Fantasma.Globals;
 using Fantasma.Graphics;
 using OpenTK.Mathematics;
-using System;
-using System.Threading;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Fantasma.Generation
@@ -16,7 +15,7 @@ namespace Fantasma.Generation
         public BlockType[] m_blocks;
         private WorldManager m_worldManager;
 
-        private Vector3i m_position;
+        public Vector3i m_position;
         private bool m_allAir = true;
 
         private Renderable m_opaque;
@@ -24,8 +23,6 @@ namespace Fantasma.Generation
 
         private MeshData m_opaqueMeshData;
         private MeshData m_transparentMeshData;
-
-        public bool readyToSetMesh;
 
         public SubChunk(Vector3i position, WorldManager worldManager)
         {
@@ -39,8 +36,18 @@ namespace Fantasma.Generation
 
             m_opaque = RenderableFactory.RegisterRenderable(m_transform, new Mesh(), ShaderContainer.m_standardShader, RenderableType.Opaque);
             m_transparent = RenderableFactory.RegisterRenderable(m_transform, new Mesh(), ShaderContainer.m_standardTransparentShader, RenderableType.Transparent);
+
+            m_opaqueMeshData = new MeshData(new float[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT *
+                WorldParameters.VERTICIES_PER_FACE * WorldParameters.VOXEL_ATTRIBUTES_LENGTH],
+                new int[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT * WorldParameters.INDICIES_PER_FACE],
+                VertexAttribute.Position, VertexAttribute.Color, VertexAttribute.UV);
+
+            m_transparentMeshData = new MeshData(new float[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT *
+                WorldParameters.VERTICIES_PER_FACE * WorldParameters.VOXEL_ATTRIBUTES_LENGTH],
+                new int[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT * WorldParameters.INDICIES_PER_FACE],
+                VertexAttribute.Position, VertexAttribute.Color, VertexAttribute.UV);
         }
-        public async Task ForceGenerate()
+        public void GenerateChunkData()
         {
             for (int i = 0; i < WorldParameters.m_chunkSizeCbd; i++)
             {
@@ -50,31 +57,22 @@ namespace Fantasma.Generation
                 if (m_blocks[i] != BlockType.Air)
                     m_allAir = false;
             }
-            await Task.Yield();
         }
         public void ChangeBlock(Vector3i voxelPos, BlockType blockType)
         {
             int blockIndex = CoordinateUtils.ThreeToIndex(voxelPos, WorldParameters.m_chunkSize);
 
-            Vector3i otherVoxelPos;
+            BlockType oldBlockType = m_blocks[blockIndex];
 
-            for (int i = 0; i < 6; i++)
-            {
-                otherVoxelPos = m_position + voxelPos + GlobalCoordinates.m_faceDirections[i];
-
-                BlockChunkPair pair = m_worldManager.GetBlockChunkPair(otherVoxelPos);
-                if(!pair.exists)
-                    continue;
-
-                pair.block.SetBlockEvent(new BlockEvent(0, m_position + voxelPos, otherVoxelPos, this, pair.subChunk, blockIndex, pair.blockIndex));
-            }
+            WorldWorkManager.DoSourceBlockEvent(oldBlockType == BlockType.Air && blockType != BlockType.Air ? BlockEventType.Break : BlockEventType.Place, 
+                m_position, voxelPos, this, blockIndex);
 
             m_blocks[blockIndex] = blockType;
 
             if (blockType != BlockType.Air)
                 m_allAir = false;
 
-            MeshChunk(null);
+            WorldWorkManager.QueueChunkMeshingPriority(this);
 
             Vector3i relativeNeighborPos;
             relativeNeighborPos.X = voxelPos.X == 15 ? 1 : voxelPos.X == 0 ? -1 : 0;
@@ -90,76 +88,55 @@ namespace Fantasma.Generation
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X + relativeNeighborPos.X, thisPos.Y, thisPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if (relativeNeighborPos.Y != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X, thisPos.Y + relativeNeighborPos.Y, thisPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if (relativeNeighborPos.Z != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X, thisPos.Y, thisPos.Z + relativeNeighborPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if(relativeNeighborPos.X != 0 && relativeNeighborPos.Y != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X + relativeNeighborPos.X, thisPos.Y + relativeNeighborPos.Y, thisPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if(relativeNeighborPos.X != 0 && relativeNeighborPos.Z != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X + relativeNeighborPos.X, thisPos.Y, thisPos.Z + relativeNeighborPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if(relativeNeighborPos.Y != 0 && relativeNeighborPos.Z != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X, thisPos.Y + relativeNeighborPos.Y, thisPos.Z + relativeNeighborPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
             if(relativeNeighborPos.X != 0 && relativeNeighborPos.Y != 0 && relativeNeighborPos.Z != 0)
             {
                 SubChunk chunk = WorldManager.GetChunk(new Vector3i(thisPos.X + relativeNeighborPos.X, thisPos.Y + relativeNeighborPos.Y, thisPos.Z + relativeNeighborPos.Z));
                 if (chunk != null)
-                    chunk.MeshChunk(null);
+                    WorldWorkManager.QueueChunkMeshing(chunk);
             }
         }
-        public async Task GenerateData()
-        {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GenerateDataThreaded));
-
-            while (!m_dataGenerated) await Task.Yield();
-        }
-        private void GenerateDataThreaded(object state)
-        {
-            m_dataGenerated = false;
-            for (int i = 0; i < WorldParameters.m_chunkSizeCbd; i++)
-            {
-                m_blocks[i] = BlockType.Dirt;
-            }
-            m_dataGenerated = true;
-        }
-        public void MeshChunk(object state)
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void MeshChunk()
         {
             if (m_allAir)
                 return;
 
             m_meshed = false;
 
-            MeshData m_opaqueMeshData = new MeshData(new float[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT *
-                WorldParameters.VERTICIES_PER_FACE * WorldParameters.VOXEL_ATTRIBUTES_LENGTH],
-                new int[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT * WorldParameters.INDICIES_PER_FACE], 
-                VertexAttribute.Position, VertexAttribute.Color, VertexAttribute.UV);
-
-            MeshData m_transparentMeshData = new MeshData(new float[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT *
-                WorldParameters.VERTICIES_PER_FACE * WorldParameters.VOXEL_ATTRIBUTES_LENGTH],
-                new int[WorldParameters.m_chunkSizeCbd * WorldParameters.VOXEL_FACE_COUNT * WorldParameters.INDICIES_PER_FACE],
-                VertexAttribute.Position, VertexAttribute.Color, VertexAttribute.UV);
+            m_opaqueMeshData.Reset();
+            m_transparentMeshData.Reset();
 
             Vector3i pos = new Vector3i();
             Vector3i worldPos = new Vector3i();
@@ -186,10 +163,11 @@ namespace Fantasma.Generation
                         if (thisBlock == BlockType.Air || thisBlock == BlockType.Nothing)
                             continue;
 
-                        Block thisData = Block.m_blocks[thisBlock];
+                        Block thisData = Block.m_blockRegistry[thisBlock];
+
                         worldPos = m_position + pos;
 
-                        if ((thisBlock & BlockType.BillboardFlags) == thisBlock)
+                        if ((thisBlock & BlockType.TransparentFlags) == thisBlock)
                         {
                             BillboardModel.Build(worldPos, m_transparentMeshData, ref vertexOffset, ref triangleIndex, ref vertexIndex,
                                 thisData.m_uvs[0]);
@@ -240,23 +218,17 @@ namespace Fantasma.Generation
                     }
                 }
             }
-
+        }
+        public void SetMesh()
+        {
+             if (m_allAir)
+                return;
+            
             m_opaque.mesh.Set(m_opaqueMeshData);
             m_transparent.mesh.Set(m_transparentMeshData);
+
             m_meshed = true;
         }
-        //public void SetMesh()
-        //{
-        //    if (m_allAir)
-        //        return;
-
-        //    if(m_opaqueMeshData.notEmpty)
-        //        m_opaque.mesh.Set(m_opaqueMeshData);
-
-        //    if (m_transparentMeshData.notEmpty)
-        //        m_transparent.mesh.Set(m_transparentMeshData);
-        //    m_meshed = true;
-        //}
         public void Dispose()
         {
             RenderableFactory.UnRegisterRenderable(m_opaque, RenderableType.Opaque);

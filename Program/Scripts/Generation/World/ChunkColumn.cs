@@ -1,5 +1,4 @@
-﻿using Fantasma.Framework;
-using OpenTK.Mathematics;
+﻿using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -10,12 +9,17 @@ namespace Fantasma.Generation
     public class ChunkColumn
     {
         public List<SubChunk> m_chunks = new List<SubChunk>();
+        public Vector2i m_position;
 
         public bool m_generating;
         public bool m_generated;
 
         public bool m_meshed;
 
+        public ChunkColumn(Vector2i position)
+        {
+            m_position = position;
+        }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public SubChunk GetChunk(int i)
         {
@@ -32,47 +36,24 @@ namespace Fantasma.Generation
         {
             return i > -1 && i < m_chunks.Count;
         }
-        public void GenerateAllData()
+        public async Task GenerateData()
         {
-            
-        }
-        public void GenerateData()
-        {
-
-        }
-        public void MeshSubChunk()
-        {
-            
-        }
-        public async Task AggresiveGenerate(Vector3i position)
-        {
+            Vector3i chunkPosition = Vector3i.Zero;
+            chunkPosition.X = m_position.X;
+            chunkPosition.Z = m_position.Y;
             for (int i = 0; i < 4; i++)
             {
-                SubChunk chunk = new SubChunk(position, WorldManager.m_instance);
+                SubChunk chunk = new SubChunk(chunkPosition, WorldManager.m_instance);
                 m_chunks.Add(chunk);
-                await chunk.ForceGenerate();
+                await Task.Run(() => chunk.GenerateChunkData());
 
-                position.Y += WorldParameters.m_chunkSize;
+                chunkPosition.Y = i * WorldParameters.m_chunkSize;
             }
             m_generated = true;
         }
-        public void MeshAll()
-        {
-            foreach (SubChunk chunk in m_chunks)
-            {
-                chunk.MeshChunk(null);
-            }
-            m_meshed = true;
-        }
-        //public void SetAllMeshes()
-        //{
-        //    foreach (SubChunk chunk in m_chunks)
-        //    {
-        //        chunk.SetMesh();
-        //    }
-        //}
         public void Dispose()
         {
+            return;
             foreach (SubChunk chunk in m_chunks)
             {
                 chunk.Dispose();

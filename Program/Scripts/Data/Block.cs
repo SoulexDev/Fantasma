@@ -1,4 +1,5 @@
-﻿using Fantasma.Globals;
+﻿using Fantasma.Generation;
+using Fantasma.Globals;
 using OpenTK.Mathematics;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ namespace Fantasma.Data
 {
     public class Block
     {
-        public static readonly Dictionary<BlockType, Block> m_blocks = new Dictionary<BlockType, Block>();
+        public static readonly Dictionary<BlockType, Block> m_blockRegistry = new Dictionary<BlockType, Block>();
         public string m_name { get; private set; }
         public string m_lornName { get; private set; }
         public BlockType m_blockType { get; private set; }
@@ -24,13 +25,21 @@ namespace Fantasma.Data
         {
             m_blockType = (BlockType)(1 << blockType);
         }
-        public void SetBlockEvent(BlockEvent blockEvent)
+        /// <summary>
+        /// Before any block events happen, check if there are more block events that will happen this tick
+        /// </summary>
+        /// <param name="blockEvent"></param>
+        public virtual void QueueAnyBlockEvents(BlockEvent blockEvent)
         {
-            OnBlockEvent(blockEvent);
+            
         }
         public virtual void OnBlockEvent(BlockEvent blockEvent)
         {
 
+        }
+        public virtual bool HasBlockEvent(BlockEvent blockEvent)
+        {
+            return false;
         }
         private Vector2i UVFromIndex(int uvIndex)
         {
@@ -120,7 +129,7 @@ namespace Fantasma.Data
         }
         private static void RegisterBlock(Block block)
         {
-            m_blocks.Add(block.m_blockType, block);
+            m_blockRegistry.Add(block.m_blockType, block);
         }
         public static void RegisterBlocks()
         {

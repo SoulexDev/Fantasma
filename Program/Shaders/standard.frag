@@ -22,6 +22,10 @@ void main()
     //float biomeCoord = mix(clampedBiome, 0, normalizedHeight);
     //vec4 grass = texture(uGrassTex, vec2(biomeCoord, normalizedHeight));
     vec4 grass = texture(uGrassTex, vec2(0.7, 0));
+    vec4 color = mix(main, grass * overlay, overlay.a) * vec4(vColor, 1);
 
-    FragColor = mix(main, grass * overlay, overlay.a) * vec4(vColor, 1);
+    if(color.a == 0)
+        discard;
+
+    FragColor = color;
 }

@@ -57,29 +57,17 @@ namespace Fantasma.Generation
                     break;
             }
         }
-        //public void GenerateAll()
-        //{
-        //    Vector3i pos = Vector3i.Zero;
-        //    for (int z = -2; z < 2; z++)
-        //    {
-        //        for (int x = -2; x < 2; x++)
-        //        {
-        //            pos.X = x;
-        //            pos.Z = z;
-
-        //            AddChunk(pos * WorldParameters.m_chunkSize, pos.Xz);
-        //        }
-        //    }
-        //    foreach (var item in m_chunkColumns)
-        //    {
-        //        item.Value.MeshAll();
-        //    }
-        //}
-        public async void AddChunk(Vector3i position, Vector2i chunkPosition)
+        public ChunkColumn CreateChunk(Vector2i chunkPosition)
         {
-            ChunkColumn column = new ChunkColumn();
-            m_chunkColumns.Add(chunkPosition, column);
-            await column.AggresiveGenerate(position);
+            ChunkColumn column = new ChunkColumn(chunkPosition);
+            WorldWorkManager.QueueChunkGeneration(column);
+            return column;
+        }
+        public static void AddChunk(ChunkColumn column)
+        {
+            if (m_instance.m_chunkColumns.ContainsKey(column.m_position))
+                return;
+            m_instance.m_chunkColumns.Add(column.m_position, column);
         }
         public static List<AABB> GetColliders(AABB bounds)
         {
@@ -119,9 +107,7 @@ namespace Fantasma.Generation
                         continue;
                     }
 
-                    m_instance.AddChunk(chunkPos * WorldParameters.m_chunkSize, chunkPos.Xz);
-                    ChunkColumn column = m_instance.m_chunkColumns[chunkPos.Xz];
-                    newVisibleChunkColumns.Add(column);
+                    newVisibleChunkColumns.Add(m_instance.CreateChunk(chunkPos.Xz));
                 }
             }
 
@@ -133,17 +119,6 @@ namespace Fantasma.Generation
             m_instance.m_visibleColumns.Clear();
 
             m_instance.m_visibleColumns = newVisibleChunkColumns;
-            foreach (var column in m_instance.m_visibleColumns)
-            {
-                if (!column.m_generated)
-                    column.MeshAll();
-
-                float timer = 0;
-                while (timer < 0.2f)
-                {
-                    timer += Time.m_deltaTime;
-                }
-            }
         }
         public static void ChangeBlock(Vector3i worldPos, BlockType block)
         {
@@ -199,20 +174,20 @@ namespace Fantasma.Generation
                 int blockIndex = CoordinateUtils.ThreeToIndex(voxelPos, WorldParameters.m_chunkSize);
                 BlockType blockType = subChunk.m_blocks[blockIndex];
 
-                return new BlockChunkPair(Block.m_blocks[blockType], subChunk, blockIndex);
+                return new BlockChunkPair(Block.m_blockRegistry[blockType], subChunk, blockIndex);
             }
             else
                 return new BlockChunkPair();
         }
         public Block GetBlock(Vector3i pos)
         {
-            return Block.m_blocks[GetBlockType(pos)];
+            return Block.m_blockRegistry[GetBlockType(pos)];
         }
         public Block GetBlock(int x, int y, int z)
         {
             Vector3i pos = new Vector3i(x, y, z);
 
-            return Block.m_blocks[GetBlockType(pos)];
+            return Block.m_blockRegistry[GetBlockType(pos)];
         }
         public BlockType GetBlockType(int x, int y, int z)
         {

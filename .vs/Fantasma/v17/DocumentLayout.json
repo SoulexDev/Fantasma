@@ -3,52 +3,32 @@
   "WorkspaceRootPath": "H:\\OpenTKProjects\\Fantasma\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\worldmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\worldmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\shaders\\standard.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\shaders\\standard.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\chunkcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\chunkcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\worldworkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\worldworkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\worldmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\worldmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\subchunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\subchunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\data\\blocks\\blockdirt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\data\\blocks\\blockdirt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\framework\\graphics\\mesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\framework\\graphics\\mesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\framework\\debug\\boundingbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\framework\\debug\\boundingbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\world\\chunkcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\world\\chunkcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\data\\blockevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\data\\blockevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\interaction\\playerinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\interaction\\playerinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\data\\blocks\\blockshortgrass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\data\\blocks\\blockshortgrass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\data\\block.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\data\\block.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\globals\\globalcoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\globals\\globalcoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\globals\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\globals\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\dimensions\\ideoniadimension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\dimensions\\ideoniadimension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\framework\\physics\\physicsbody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,16 +39,20 @@
       "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\framework\\graphics\\mesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\framework\\graphics\\mesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\globals\\coordinateutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\globals\\coordinateutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\interaction\\playerinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\interaction\\playerinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\core.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:core.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\generation\\dimensions\\ideoniadimension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\generation\\dimensions\\ideoniadimension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|h:\\opentkprojects\\fantasma\\program\\scripts\\globals\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C3E688C-C093-4BBF-92D7-5462B0767E35}|Fantasma.csproj|solutionrelative:program\\scripts\\globals\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,186 +62,133 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 10,
               "Title": "Core.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Core.cs",
               "RelativeDocumentMoniker": "Core.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Core.cs",
               "RelativeToolTip": "Core.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwDsAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T13:00:25.116Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "standard.frag",
+              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Shaders\\standard.frag",
+              "RelativeDocumentMoniker": "Program\\Shaders\\standard.frag",
+              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Shaders\\standard.frag",
+              "RelativeToolTip": "Program\\Shaders\\standard.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-24T22:26:02.181Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "WorldWorkManager.cs",
+              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\WorldWorkManager.cs",
+              "RelativeDocumentMoniker": "Program\\Scripts\\Generation\\World\\WorldWorkManager.cs",
+              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\WorldWorkManager.cs",
+              "RelativeToolTip": "Program\\Scripts\\Generation\\World\\WorldWorkManager.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAADwv10AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:13:15.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "BlockEvent.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\BlockEvent.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Data\\BlockEvent.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\BlockEvent.cs",
               "RelativeToolTip": "Program\\Scripts\\Data\\BlockEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-24T00:23:26.788Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BlockDirt.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Blocks\\BlockDirt.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Data\\Blocks\\BlockDirt.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Blocks\\BlockDirt.cs",
-              "RelativeToolTip": "Program\\Scripts\\Data\\Blocks\\BlockDirt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T00:21:54.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BoundingBox.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Framework\\Debug\\BoundingBox.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Framework\\Debug\\BoundingBox.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Framework\\Debug\\BoundingBox.cs",
-              "RelativeToolTip": "Program\\Scripts\\Framework\\Debug\\BoundingBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T22:13:22.822Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GlobalCoordinates.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\GlobalCoordinates.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Globals\\GlobalCoordinates.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\GlobalCoordinates.cs",
-              "RelativeToolTip": "Program\\Scripts\\Globals\\GlobalCoordinates.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T21:57:57.769Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CoordinateUtils.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\CoordinateUtils.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Globals\\CoordinateUtils.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\CoordinateUtils.cs",
-              "RelativeToolTip": "Program\\Scripts\\Globals\\CoordinateUtils.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T21:57:39.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BlockShortGrass.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Blocks\\BlockShortGrass.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Data\\Blocks\\BlockShortGrass.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Blocks\\BlockShortGrass.cs",
-              "RelativeToolTip": "Program\\Scripts\\Data\\Blocks\\BlockShortGrass.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T21:47:11.139Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Enums.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\Enums.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Globals\\Enums.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Globals\\Enums.cs",
               "RelativeToolTip": "Program\\Scripts\\Globals\\Enums.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T21:38:08.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Block.cs",
-              "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Block.cs",
-              "RelativeDocumentMoniker": "Program\\Scripts\\Data\\Block.cs",
-              "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Data\\Block.cs",
-              "RelativeToolTip": "Program\\Scripts\\Data\\Block.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAuwH8AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T21:34:07.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "Mesh.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Framework\\Graphics\\Mesh.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Framework\\Graphics\\Mesh.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Framework\\Graphics\\Mesh.cs",
               "RelativeToolTip": "Program\\Scripts\\Framework\\Graphics\\Mesh.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAowG0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwC8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T20:48:32.559Z"
+              "WhenOpened": "2025-04-23T20:48:32.559Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ChunkColumn.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\ChunkColumn.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Generation\\World\\ChunkColumn.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\ChunkColumn.cs",
               "RelativeToolTip": "Program\\Scripts\\Generation\\World\\ChunkColumn.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwEAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T19:40:34.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "WorldManager.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\WorldManager.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Generation\\World\\WorldManager.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\WorldManager.cs",
               "RelativeToolTip": "Program\\Scripts\\Generation\\World\\WorldManager.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAcwGYAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAD4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T15:56:22.145Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "PlayerInteraction.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Interaction\\PlayerInteraction.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Interaction\\PlayerInteraction.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Interaction\\PlayerInteraction.cs",
               "RelativeToolTip": "Program\\Scripts\\Interaction\\PlayerInteraction.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T06:00:45.323Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Player\\PlayerController.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Player\\PlayerController.cs",
@@ -265,11 +196,12 @@
               "RelativeToolTip": "Program\\Scripts\\Player\\PlayerController.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAlwEkAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T22:05:35.08Z"
+              "WhenOpened": "2025-04-21T22:05:35.08Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "PhysicsBody.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Framework\\Physics\\PhysicsBody.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Framework\\Physics\\PhysicsBody.cs",
@@ -277,7 +209,8 @@
               "RelativeToolTip": "Program\\Scripts\\Framework\\Physics\\PhysicsBody.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwCYAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T17:33:53.9Z"
+              "WhenOpened": "2025-04-21T17:33:53.9Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -289,17 +222,18 @@
               "RelativeToolTip": "Program\\Scripts\\Generation\\Dimensions\\IdeoniaDimension.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T15:22:30.192Z"
+              "WhenOpened": "2025-04-17T15:22:30.192Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SubChunk.cs",
               "DocumentMoniker": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\SubChunk.cs",
               "RelativeDocumentMoniker": "Program\\Scripts\\Generation\\World\\SubChunk.cs",
               "ToolTip": "H:\\OpenTKProjects\\Fantasma\\Program\\Scripts\\Generation\\World\\SubChunk.cs",
               "RelativeToolTip": "Program\\Scripts\\Generation\\World\\SubChunk.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAlwCoAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAALUAAAAAAAAAAAAowIcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T14:35:57.671Z",
               "EditorCaption": ""

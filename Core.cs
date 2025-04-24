@@ -27,9 +27,13 @@ namespace Fantasma
         public static Random m_random;
         public static int m_seed;
 
+        public delegate void Tick();
+        public static event Tick OnTick;
+
         private Time m_time;
         private Input m_input;
         private WorldManager m_worldManager;
+        private WorldWorkManager m_worldWorkManager;
         private PlayerController m_playerController;
         private PlayerInteraction m_playerInteraction;
 
@@ -49,6 +53,7 @@ namespace Fantasma
             GL.Enable(EnableCap.DepthTest);
 
             ThreadPool.SetMaxThreads(16, 32);
+            m_worldWorkManager = new WorldWorkManager();
 
             m_seed = DateTime.Now.Millisecond;
             m_random = new Random(m_seed);
@@ -75,8 +80,10 @@ namespace Fantasma
             m_frameTimer += Time.m_deltaTime;
             if(m_frameTimer >= 0.05f)
             {
-                m_time.SetFixedDeltaTime(0.05f);
+                m_time.SetFixedDeltaTime(m_frameTimer);
                 m_frameTimer -= 0.05f;
+
+                OnTick?.Invoke();
 
                 for (int i = 0; i < m_objects.Count; i++)
                 {

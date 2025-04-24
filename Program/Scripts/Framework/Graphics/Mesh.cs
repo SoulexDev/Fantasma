@@ -20,6 +20,12 @@ namespace Fantasma.Graphics
 
             notEmpty = true;
         }
+        public void Reset()
+        {
+            vertices = new float[vertices.Length];
+            indicies = new int[indicies.Length];
+            //attributes = new VertexAttribute[attributes.Length];
+        }
     }
     public class Mesh
     {
